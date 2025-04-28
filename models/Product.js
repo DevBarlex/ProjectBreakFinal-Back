@@ -31,15 +31,14 @@ const productSchema = new mongoose.Schema({
           'Accesorios': ['Único']
         };
 
-        const category = this.category;  // Usamos 'this.category' para acceder a la categoría
+        const category = this.category;  
 
-        if (!category) return false; // Si no tiene categoría, devolvemos false
+        if (!category) return false; 
 
-        // Validamos que todas las tallas sean correctas para la categoría
         return sizes.every(size => validSizes[category]?.includes(size));
       },
       message: function(props) {
-        const category = this.category;  // Usamos 'this.category' para acceder a la categoría
+        const category = this.category;  
         return `Al menos una talla no es válida para la categoría ${category || 'desconocida'}.`;
       }
     }
@@ -53,3 +52,5 @@ const productSchema = new mongoose.Schema({
 const Product = mongoose.model('Product', productSchema);
 
 module.exports = Product;
+
+
